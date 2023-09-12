@@ -1,0 +1,33 @@
+@use "../../../sass/index.scss" as *;
+
+.card {
+	max-width: px-to-rem(250px);
+	@include custom-media-query("mobile", 500px) {
+		max-width: px-to-rem(500px);
+	}
+
+	h4 {
+		font-size: px-to-rem(18px);
+		margin-top: px-to-rem(20px);
+	}
+	.poster {
+		&:hover {
+			filter: contrast(1.1) brightness(1.1);
+		}
+	}
+
+	.stats_wrapper {
+		display: flex;
+		justify-content: space-between;
+		h5 {
+			margin: 0;
+			font-size: px-to-rem(10px);
+		}
+		p {
+			font-size: px-to-rem(12px);
+		}
+	}
+	.statsVote {
+		text-align: end;
+	}
+}

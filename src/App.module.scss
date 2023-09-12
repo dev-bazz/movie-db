@@ -12,16 +12,36 @@
 	background-position: center;
 	position: relative;
 	background-blend-mode: multiply;
+	background-image: url(./assets/bgWick.png);
+	padding-inline: px-to-rem(16px);
 
 	&_container {
 		color: map-get($colors, white);
 		max-width: px-to-rem(500px);
+		margin-top: 5%;
+
+		.stats_wrapper {
+			display: flex;
+			gap: px-to-rem(10px);
+			align-items: center;
+			justify-content: space-between;
+			max-width: px-to-rem(200px);
+			margin-top: px-to-rem(16px);
+		}
+
+		.stats {
+			display: flex;
+			gap: px-to-rem(10px);
+		}
+
 		h2 {
 			font-size: px-to-rem(48px);
 		}
 		p {
 			font-size: px-to-rem(14px);
 			font-weight: 500;
+			margin-top: px-to-rem(16px);
+			max-width: 35ch;
 		}
 
 		a {
@@ -30,6 +50,58 @@
 			padding-inline: px-to-rem(16px);
 			padding-block: px-to-rem(8px);
 			border-radius: px-to-rem(6px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			max-width: px-to-rem(138px);
+			margin-top: px-to-rem(16px);
+			gap: px-to-rem(8px);
 		}
+	}
+}
+
+.topRated {
+	padding-inline: px-to-rem(16px);
+	margin-top: px-to-rem(70px);
+	&Items {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(225px, auto));
+		gap: px-to-rem(20px);
+		justify-content: space-between;
+		margin-top: px-to-rem(40px);
+		@include custom-media-query("mobile", 500px) {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+.topRatedTitle {
+	font-size: px-to-rem(32px);
+	font-weight: 600;
+}
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: px-to-rem(492px);
+	margin-top: px-to-rem(142px);
+	padding-bottom: px-to-rem(72px);
+	padding-inline: px-to-rem(16px);
+
+	.social {
+		display: flex;
+		gap: px-to-rem(48px);
+	}
+
+	ul {
+		display: flex;
+		font-weight: 600;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	p {
+		color: #6b7280;
 	}
 }
