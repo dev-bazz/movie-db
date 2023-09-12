@@ -5,6 +5,31 @@
 }
 
 .hero {
-	background-color: blue;
+	background-color: hsla(0, 0%, 0%, 0.305);
 	min-height: px-to-rem(600px);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	background-blend-mode: multiply;
+
+	&_container {
+		color: map-get($colors, white);
+		max-width: px-to-rem(500px);
+		h2 {
+			font-size: px-to-rem(48px);
+		}
+		p {
+			font-size: px-to-rem(14px);
+			font-weight: 500;
+		}
+
+		a {
+			color: map-get($colors, white);
+			background-color: map-get($colors, rose);
+			padding-inline: px-to-rem(16px);
+			padding-block: px-to-rem(8px);
+			border-radius: px-to-rem(6px);
+		}
+	}
 }

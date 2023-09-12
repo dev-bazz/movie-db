@@ -1,0 +1,12 @@
+@use "../../../sass/index.scss" as *;
+.container {
+	max-width: px-to-rem(400px);
+}
+
+.spiner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
