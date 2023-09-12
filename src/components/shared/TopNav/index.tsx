@@ -4,6 +4,7 @@ import search from "./assets/Search.png";
 import menu from "./assets/Menu.png";
 
 export function TopNav() {
+	console.log(import.meta.env.VITE_APP_TEST)
 	return (
 		<nav className={`${style.container}`}>
 			<div className="logo">
