@@ -4,8 +4,14 @@ import { TopNav } from "./components";
 function App() {
 	return (
 		<div className={style.app}>
-			<TopNav />
-			<h1>Hello</h1>
+			<section
+				aria-label="hero section"
+				className={style.hero}>
+				<TopNav />
+				<div className={style.container}>
+					<h2>John Wick</h2>
+				</div>
+			</section>
 		</div>
 	);
 }

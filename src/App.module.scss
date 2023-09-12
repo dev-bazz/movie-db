@@ -1,2 +1,10 @@
-.app {
+@use "./sass/index.scss" as *;
+
+.container {
+	@include container;
+}
+
+.hero {
+	background-color: blue;
+	min-height: px-to-rem(600px);
 }

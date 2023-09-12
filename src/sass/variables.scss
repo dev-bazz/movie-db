@@ -1,0 +1,12 @@
+$container: (
+	max-width: 1200px,
+);
+
+$colors: (
+	white: #fff,
+);
+
+@mixin container {
+	max-width: map-get($container, max-width);
+	margin: 0 auto;
+}
