@@ -22,11 +22,9 @@ function App() {
 
 	if (Array.isArray(data.results) == false) return;
 	const movies: moviesType[] = data.results;
-	const sortedMovies = movies.sort((a, b) => {
-		return b.vote_count - a.vote_count;
-	});
-	const Top = sortedMovies.slice(0, 2)[0];
-	console.log(Top, "Top");
+	const sortedMovies = movies
+		.slice(0, 12)
+		.sort((a, b) => b.vote_average - a.vote_average);
 
 	return (
 		<div className={style.app}>
