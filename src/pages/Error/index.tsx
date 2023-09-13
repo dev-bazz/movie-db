@@ -16,7 +16,12 @@ export function Error() {
 			{(error as Error)?.message ||
 				(error as { statusText?: string })?.statusText}
 
-			<Link to="/"> Go to Home</Link>
+			<Link
+				className={style.link}
+				to="/">
+				{" "}
+				Go to Home
+			</Link>
 		</div>
 	);
 }

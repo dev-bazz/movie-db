@@ -15,3 +15,11 @@
 .lottieError {
 	max-width: px-to-rem(400px);
 }
+
+.link {
+	margin-top: 1rem;
+	background-color: map-get($colors, rose);
+	padding: px-to-rem(8px) px-to-rem(24px);
+	color: white;
+	border-radius: 8px;
+}
