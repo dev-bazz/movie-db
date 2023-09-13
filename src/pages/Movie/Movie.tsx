@@ -108,7 +108,7 @@ export function Movie() {
 				<div className={style.allStats}>
 					<div className={style.movieInfo}>
 						<div className={style.movieStats}>
-							<h1>{movie.title}</h1>{" "}
+							<h1 data-testid="movie-title">{movie.title}</h1>{" "}
 							<div className={style.meta}>
 								<span>•</span> <p data-testid="movie-release-date">{getUTC()}</p>{" "}
 								<span>•</span>{" "}
@@ -135,7 +135,7 @@ export function Movie() {
 							</p>
 						</div>
 					</div>
-					<div className="">
+					<div className={style.off}>
 						<div className={style.rating}>
 							<span>
 								<img

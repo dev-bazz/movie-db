@@ -21,6 +21,9 @@
 	align-items: center;
 	position: sticky;
 	top: 0;
+	@include custom-media-query("mobile", 900px) {
+		display: none;
+	}
 
 	li {
 		display: flex;
@@ -65,10 +68,16 @@
 			display: flex;
 			align-items: center;
 			color: #404040;
+			@include custom-media-query("mobile", 500px) {
+				flex-wrap: wrap;
+			}
 
 			.meta {
 				display: flex;
-
+				@include custom-media-query("mobile", 500px) {
+					flex-wrap: wrap;
+					justify-content: flex-start;
+				}
 				font-size: 14px;
 				gap: px-to-rem(10px);
 				align-self: center;
@@ -100,7 +109,9 @@
 	min-height: px-to-rem(448px);
 	background-repeat: no-repeat;
 	background-size: cover;
-
+	@include custom-media-query("mobile", 500px) {
+		background-position: center;
+	}
 	border-radius: px-to-rem(20px);
 	margin-top: px-to-rem(20px);
 	box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
@@ -139,5 +150,11 @@
 
 	.overview {
 		margin-top: px-to-rem(20px);
+	}
+}
+
+.off {
+	@include custom-media-query("mobile", 500px) {
+		display: none;
 	}
 }

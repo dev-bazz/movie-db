@@ -20,7 +20,8 @@ export function Card({ movie }: { movie: moviesType }) {
 			<h4 data-testid="movie-title">{movie.title}</h4>
 			<div className={style.stats_wrapper}>
 				<div className={style.stats}>
-					<h5>Release Date:</h5> <p data-testid="">{movie.release_date}</p>
+					<h5>Release Date:</h5>{" "}
+					<p data-testid="movie-release-date">{movie.release_date}</p>
 				</div>
 				<div className={style.statsVote}>
 					<h5>Vote:</h5> <p>{movie.vote_count}</p>
