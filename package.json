@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dev-bazz.github.io/movie-db/",
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "vite",
