@@ -1,0 +1,66 @@
+@use "../../sass/index.scss" as *;
+
+.movieDetail {
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	max-width: px-to-rem(186px);
+	padding-inline: px-to-rem(20px);
+}
+.sideNav {
+	padding-top: px-to-rem(52px);
+	max-width: px-to-rem(230px);
+	width: px-to-rem(230px);
+	border: 2px solid hsla(0, 0%, 0%, 0.3);
+	min-height: calc(100vh - px-to-rem(52px));
+	border-radius: 0 px-to-rem(45px) px-to-rem(45px) 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	li {
+		display: flex;
+
+		padding-block: px-to-rem(28px);
+		justify-content: center;
+		align-items: center;
+		gap: px-to-rem(16px);
+
+		a {
+			color: black;
+			align-self: center;
+		}
+	}
+
+	.active {
+		background-color: hsla(345, 83%, 41%, 0.1);
+		border: 4px solid map-get($colors, rose);
+		border-width: 0 6px 0 0;
+	}
+	ul {
+		width: 100%;
+	}
+}
+
+.main {
+	max-width: px-to-rem(1140px);
+	background-color: #666666;
+	width: 100%;
+}
+
+.pop {
+	border: 1px solid rgba(190, 18, 60, 0.7);
+	max-width: px-to-rem(150px);
+	padding: px-to-rem(20px) px-to-rem(10px);
+	border-radius: px-to-rem(20px);
+	padding-top: px-to-rem(40px);
+	background-color: hsla(345, 83%, 41%, 0.048);
+	h4 {
+		font-size: px-to-rem(15px);
+	}
+	p {
+		font-size: px-to-rem(12px);
+	}
+}

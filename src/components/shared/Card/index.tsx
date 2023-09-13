@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { moviesType } from "../../../types/index";
 import style from "./style.module.scss";
 export function Card({ movie }: { movie: moviesType }) {
@@ -5,12 +6,16 @@ export function Card({ movie }: { movie: moviesType }) {
 		<article
 			data-testid="movie-card"
 			className={style.card}>
-			<div className="">
-				<img
-					data-testid="movie-poster"
-					className={style.poster}
-					src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-				/>
+			<div className="movie-poster">
+				<Link
+					to={{ pathname: "/movie" }}
+					state={{ movieId: movie.id }}>
+					<img
+						data-testid="movie-poster"
+						className={style.poster}
+						src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+					/>
+				</Link>
 			</div>
 			<h4 data-testid="movie-title">{movie.title}</h4>
 			<div className={style.stats_wrapper}>

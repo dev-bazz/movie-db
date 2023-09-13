@@ -51,7 +51,7 @@ function App() {
 							assassins' guild, and with a $14 million price tag on his head, he
 							is the target of hit men and women everywhere.
 						</p>
-						<Link to={{ pathname: "/" }}>
+						<Link to={{ pathname: "/movie" }}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="20"
@@ -69,7 +69,6 @@ function App() {
 					</div>
 				</div>
 			</section>
-
 			<section
 				aria-label="top rated"
 				className={style.topRated}>

@@ -11,8 +11,10 @@
 		margin-top: px-to-rem(20px);
 	}
 	.poster {
+		filter: contrast(1.1) brightness(1.1);
+		transition: all 0.3s;
 		&:hover {
-			filter: contrast(1.1) brightness(1.1);
+			filter: contrast(0.9) brightness(0.9);
 		}
 	}
 
