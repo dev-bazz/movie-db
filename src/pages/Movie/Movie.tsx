@@ -6,10 +6,38 @@ import movies from "./assets/Movie_Projector.png";
 import series from "./assets/TV_Show.png";
 import calender from "./assets/Calendar.png";
 import logout from "./assets/Logout.png";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../util";
+import { movieType } from "../../types";
+import { useState } from "react";
+import { Spinner } from "../../components";
+import star from "./assets/Star.png";
 
 export function Movie() {
+	const [runtime, setRunTime] = useState<string>();
+	const { data, isLoading } = useQuery(["movie"], {
+		queryFn: () => fetchAPI("/movie/614930"),
+	});
+	const movie: movieType = data;
+
+	const formatter = new Intl.NumberFormat("en-US", {
+		notation: "compact",
+		compactDisplay: "short",
+	});
+
+	if (isLoading) {
+		return <Spinner />;
+	}
+
+	function getUTC() {
+		return new Date(movie.release_date).getTime();
+	}
+	// const { data: MoveVideo } = useQuery(["movieVideo"], {
+	// 	queryFn: () => fetchAPI("/movie/614930/videos"),
+	// });
+
 	const location = useLocation();
-	console.log(location, "location");
+	console.log("location", data);
 	return (
 		<div className={style.movieDetail}>
 			<nav className={style.sideNav}>
@@ -68,7 +96,49 @@ export function Movie() {
 			</nav>
 			<main className={style.main}>
 				<div className="trailer">
-					<h2>Watch Trailer</h2>
+					<div
+						className={style.mainImage}
+						style={{
+							backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+						}}></div>
+				</div>
+				<div className={style.allStats}>
+					<div className={style.movieInfo}>
+						<div className={style.movieStats}>
+							<h1>{movie.title}</h1>{" "}
+							<div className={style.meta}>
+								<span>•</span> <p>{getUTC()}</p> <span>•</span>{" "}
+								{isLoading ? (
+									<h1>Loading</h1>
+								) : (
+									<div className="">
+										<p>{movie.runtime}Minutes</p>
+									</div>
+								)}
+								<div className={style.genres}>
+									{movie.genres.map((item) => (
+										<span key={item.id}>{item.name}</span>
+									))}
+								</div>
+							</div>
+						</div>
+
+						<div className="">
+							<p className={style.overview}>{movie.overview}</p>
+						</div>
+					</div>
+					<div className="">
+						<div className={style.rating}>
+							<span>
+								<img
+									src={star}
+									alt="vote"
+								/>
+							</span>
+							<span>{movie.vote_average}</span> |
+							<span>{formatter.format(movie.vote_count)}</span>
+						</div>
+					</div>
 				</div>
 			</main>
 		</div>
