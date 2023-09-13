@@ -8,7 +8,7 @@ export function Card({ movie }: { movie: moviesType }) {
 			className={style.card}>
 			<div className="movie-poster">
 				<Link
-					to={{ pathname: "/movie" }}
+					to={{ pathname: `/movie/${movie.id}` }}
 					state={{ movieId: movie.id }}>
 					<img
 						data-testid="movie-poster"

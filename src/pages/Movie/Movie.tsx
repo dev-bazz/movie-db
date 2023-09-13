@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import style from "./style.module.scss";
 import logo from "./assets/movieboxblack.png";
 import home from "./assets/Home.png";
@@ -9,14 +9,14 @@ import logout from "./assets/Logout.png";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../util";
 import { movieType } from "../../types";
-import { useState } from "react";
 import { Spinner } from "../../components";
 import star from "./assets/Star.png";
 
 export function Movie() {
-	const [runtime, setRunTime] = useState<string>();
+	const { movieId } = useParams();
+
 	const { data, isLoading } = useQuery(["movie"], {
-		queryFn: () => fetchAPI("/movie/614930"),
+		queryFn: () => fetchAPI(`/movie/${movieId}`),
 	});
 	const movie: movieType = data;
 
@@ -30,14 +30,17 @@ export function Movie() {
 	}
 
 	function getUTC() {
-		return new Date(movie.release_date).getTime();
+		const utcDate = new Date(movie.release_date).toUTCString();
+
+		const stringdate = utcDate.split(" ").slice(0, 4).join(" ");
+		console.log(stringdate);
+		return stringdate;
 	}
 	// const { data: MoveVideo } = useQuery(["movieVideo"], {
 	// 	queryFn: () => fetchAPI("/movie/614930/videos"),
 	// });
 
-	const location = useLocation();
-	console.log("location", data);
+	console.log("location", movieId, movie.release_date);
 	return (
 		<div className={style.movieDetail}>
 			<nav className={style.sideNav}>
@@ -107,12 +110,13 @@ export function Movie() {
 						<div className={style.movieStats}>
 							<h1>{movie.title}</h1>{" "}
 							<div className={style.meta}>
-								<span>•</span> <p>{getUTC()}</p> <span>•</span>{" "}
+								<span>•</span> <p data-testid="movie-release-date">{getUTC()}</p>{" "}
+								<span>•</span>{" "}
 								{isLoading ? (
 									<h1>Loading</h1>
 								) : (
 									<div className="">
-										<p>{movie.runtime}Minutes</p>
+										<p data-testid="movie-runtime">{movie.runtime} Minutes</p>
 									</div>
 								)}
 								<div className={style.genres}>
@@ -124,7 +128,11 @@ export function Movie() {
 						</div>
 
 						<div className="">
-							<p className={style.overview}>{movie.overview}</p>
+							<p
+								className={style.overview}
+								data-testid="movie-overview">
+								{movie.overview}
+							</p>
 						</div>
 					</div>
 					<div className="">

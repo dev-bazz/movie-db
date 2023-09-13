@@ -1,0 +1,17 @@
+@use "../../sass/index.scss" as *;
+
+.container {
+	@include container;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 10vh;
+
+	h1 {
+		font-size: 2rem;
+	}
+}
+
+.lottieError {
+	max-width: px-to-rem(400px);
+}

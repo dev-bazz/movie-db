@@ -68,10 +68,15 @@
 
 			.meta {
 				display: flex;
-				flex: 1;
+
 				font-size: 14px;
 				gap: px-to-rem(10px);
 				align-self: center;
+				justify-content: center;
+				span,
+				p {
+					align-self: center;
+				}
 				div {
 					display: flex;
 				}
@@ -95,7 +100,7 @@
 	min-height: px-to-rem(448px);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
+
 	border-radius: px-to-rem(20px);
 	margin-top: px-to-rem(20px);
 	box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
