@@ -1,11 +1,39 @@
 @use "../../../sass/index.scss" as *;
 
 .card {
+	position: relative;
 	max-width: px-to-rem(250px);
 	@include custom-media-query("mobile", 500px) {
 		max-width: px-to-rem(500px);
 	}
-
+	.red {
+		background-color: rgba(255, 0, 0, 0.249);
+		position: absolute;
+		z-index: 10;
+		border: 0.1px solid #be123d6b;
+		padding: px-to-rem(6px);
+		border-radius: px-to-rem(50px);
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+		right: 16px;
+		cursor: pointer;
+		top: 16px;
+	}
+	.like {
+		cursor: pointer;
+		position: absolute;
+		z-index: 10;
+		background-color: rgba(243, 244, 246, 0.5);
+		padding: px-to-rem(6px);
+		border-radius: px-to-rem(50px);
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+		right: 16px;
+		top: 16px;
+		border: 0.1px solid rgba(255, 255, 255, 0.43);
+	}
 	h4 {
 		font-size: px-to-rem(18px);
 		margin-top: px-to-rem(20px);
