@@ -26,7 +26,7 @@ export function Card({ movie }: { movie: moviesType }) {
 					</svg>
 				</div>
 				<Link
-					to={{ pathname: `/movie/${movie.id}` }}
+					to={{ pathname: `/movies/${movie.id}` }}
 					state={{ movieId: movie.id }}>
 					<img
 						data-testid="movie-poster"
