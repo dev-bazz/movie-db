@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import style from "./App.module.scss";
 import { Card, Spinner, TopNav } from "./components";
 import { fetchAPI } from "./util";
-import { moviesType } from "./types";
+import { movieType, moviesType } from "./types";
 import { Link } from "react-router-dom";
 import imbn from "./assets/imdb.png";
 import tomato from "./assets/tomato.png";
@@ -16,10 +16,14 @@ function App() {
 		queryFn: () => fetchAPI("/movie/top_rated"),
 	});
 
-	if (isLoading) {
+	const { data: heroMovie, isLoading: loadingHerro } = useQuery(["hero"], {
+		queryFn: () => fetchAPI(`/movie/458156`),
+	});
+	if (isLoading || loadingHerro) {
 		return <Spinner />;
 	}
 
+	const displayHero: movieType = heroMovie;
 	if (Array.isArray(data.results) == false) return;
 	const movies: moviesType[] = data.results;
 	const sortedMovies = movies
@@ -34,7 +38,7 @@ function App() {
 				<TopNav />
 				<div className={style.container}>
 					<div className={style.hero_container}>
-						<h2>John Wick 3 : Parabellum</h2>
+						<h2>{displayHero.title}</h2>
 						<div className={style.stats_wrapper}>
 							<div className={style.stats}>
 								<img src={imbn} /> <span>86.0 / 100</span>
@@ -44,11 +48,7 @@ function App() {
 								<span>97%</span>
 							</div>
 						</div>
-						<p>
-							John Wick is on the run after killing a member of the international
-							assassins' guild, and with a $14 million price tag on his head, he
-							is the target of hit men and women everywhere.
-						</p>
+						<p>{displayHero.overview}</p>
 						<Link to={{ pathname: "/movie" }}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

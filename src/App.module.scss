@@ -4,6 +4,12 @@
 	@include container;
 }
 
+@mixin ellipsis($line: 1) {
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
 .hero {
 	background-color: hsla(0, 0%, 0%, 0.305);
 	min-height: px-to-rem(600px);
@@ -35,13 +41,17 @@
 		}
 
 		h2 {
-			font-size: px-to-rem(48px);
+			font-size: px-to-rem(52px);
+			@include custom-media-query("mobile", 500px) {
+				font-size: px-to-rem(46px);
+			}
 		}
 		p {
 			font-size: px-to-rem(14px);
 			font-weight: 500;
 			margin-top: px-to-rem(16px);
-			max-width: 35ch;
+			max-width: 47ch;
+			@include ellipsis(4);
 		}
 
 		a {

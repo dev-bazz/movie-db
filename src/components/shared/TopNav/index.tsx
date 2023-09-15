@@ -24,7 +24,7 @@ export function TopNav() {
 			`/search/movie?query=${inputRef.current?.value}&include_adult=false&language=en-US&page=1`
 		).then((data) => {
 			setSearched(data.results);
-			console.log(data, "Search", searched);
+			
 		});
 	}
 
@@ -35,15 +35,15 @@ export function TopNav() {
 				searchRef.current.contains(e.target as Node) ||
 				searchIconRef.current?.contains(e.target as Node)
 			) {
-				console.log("inside Search");
+				
 			} else {
 				setOpen(false);
-				console.log("outside Search");
+				
 			}
 
 			return () => {
 				document.removeEventListener("click", () => {
-					console.log("Cleaned Event Listener");
+					
 				});
 			};
 		});

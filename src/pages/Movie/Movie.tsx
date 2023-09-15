@@ -33,14 +33,14 @@ export function Movie() {
 		const utcDate = new Date(movie.release_date).toUTCString();
 
 		const stringdate = utcDate.split(" ").slice(0, 4).join(" ");
-		console.log(stringdate);
+		
 		return stringdate;
 	}
 	// const { data: MoveVideo } = useQuery(["movieVideo"], {
 	// 	queryFn: () => fetchAPI("/movie/614930/videos"),
 	// });
 
-	console.log("location", movieId, movie.release_date);
+	
 	return (
 		<div className={style.movieDetail}>
 			<nav className={style.sideNav}>
