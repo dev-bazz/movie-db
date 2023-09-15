@@ -106,7 +106,7 @@ export function Movie() {
 				<div className="trailer">
 					<iframe
 						className={style.mainImage}
-						src={`https://www.youtube.com/embed/${videoSource[0].key}`}></iframe>
+						src={`https://www.youtube.com/embed/${videoSource[0]?.key}`}></iframe>
 				</div>
 				<div className={style.allStats}>
 					<div className={style.movieInfo}>
@@ -123,8 +123,8 @@ export function Movie() {
 									</div>
 								)}
 								<div className={style.genres}>
-									{movie?.genres.map((item) => (
-										<span key={item.id}>{item.name}</span>
+									{movie?.genres.map((item, key) => (
+										<span key={key}>{item.name}</span>
 									))}
 								</div>
 							</div>
