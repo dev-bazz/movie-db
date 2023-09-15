@@ -106,9 +106,10 @@
 	}
 }
 .mainImage {
-	min-height: px-to-rem(448px);
+	min-height: px-to-rem(548px);
 	background-repeat: no-repeat;
 	background-size: cover;
+	width: 100%;
 	@include custom-media-query("mobile", 500px) {
 		background-position: center;
 	}

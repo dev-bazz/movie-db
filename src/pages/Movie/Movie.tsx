@@ -8,7 +8,7 @@ import calender from "./assets/Calendar.png";
 import logout from "./assets/Logout.png";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../util";
-import { movieType } from "../../types";
+import { Result, movieType } from "../../types";
 import { Spinner } from "../../components";
 import star from "./assets/Star.png";
 
@@ -18,6 +18,12 @@ export function Movie() {
 	const { data, isLoading } = useQuery(["movie"], {
 		queryFn: () => fetchAPI(`/movie/${movieId}`),
 	});
+	const { data: videoPlay } = useQuery(["movieSource"], {
+		queryFn: () => fetchAPI(`/movie/${movieId}/videos?language=en-US`),
+	});
+
+	console.log(data);
+
 	const movie: movieType = data;
 
 	const formatter = new Intl.NumberFormat("en-US", {
@@ -25,22 +31,24 @@ export function Movie() {
 		compactDisplay: "short",
 	});
 
-	if (isLoading) {
+	if (isLoading || videoPlay.results == null) {
 		return <Spinner />;
 	}
+
+	const videoSource: Result[] = videoPlay.results;
+	console.log(videoSource, "Video-Source");
 
 	function getUTC() {
 		const utcDate = new Date(movie.release_date).toUTCString();
 
 		const stringdate = utcDate.split(" ").slice(0, 4).join(" ");
-		
+
 		return stringdate;
 	}
 	// const { data: MoveVideo } = useQuery(["movieVideo"], {
 	// 	queryFn: () => fetchAPI("/movie/614930/videos"),
 	// });
 
-	
 	return (
 		<div className={style.movieDetail}>
 			<nav className={style.sideNav}>
@@ -99,11 +107,9 @@ export function Movie() {
 			</nav>
 			<main className={style.main}>
 				<div className="trailer">
-					<div
+					<iframe
 						className={style.mainImage}
-						style={{
-							backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
-						}}></div>
+						src={`https://www.youtube.com/embed/${videoSource[0].key}`}></iframe>
 				</div>
 				<div className={style.allStats}>
 					<div className={style.movieInfo}>
