@@ -10,5 +10,6 @@ $colors: (
 
 @mixin container {
 	max-width: map-get($container, max-width);
+	position: relative;
 	margin: 0 auto;
 }
