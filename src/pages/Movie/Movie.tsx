@@ -22,7 +22,7 @@ export function Movie() {
 		queryFn: () => fetchAPI(`/movie/${movieId}/videos?language=en-US`),
 	});
 
-	console.log(data);
+	
 
 	const movie: movieType = data;
 
@@ -36,7 +36,7 @@ export function Movie() {
 	}
 
 	const videoSource: Result[] = videoPlay.results;
-	console.log(videoSource, "Video-Source");
+	
 
 	function getUTC() {
 		const utcDate = new Date(movie.release_date).toUTCString();
