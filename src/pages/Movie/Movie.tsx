@@ -22,8 +22,6 @@ export function Movie() {
 		queryFn: () => fetchAPI(`/movie/${movieId}/videos?language=en-US`),
 	});
 
-	
-
 	const movie: movieType = data;
 
 	const formatter = new Intl.NumberFormat("en-US", {
@@ -31,12 +29,11 @@ export function Movie() {
 		compactDisplay: "short",
 	});
 
-	if (isLoading || videoPlay.results == null) {
+	if (isLoading || videoPlay?.results == null) {
 		return <Spinner />;
 	}
 
-	const videoSource: Result[] = videoPlay.results;
-	
+	const videoSource: Result[] = videoPlay?.results;
 
 	function getUTC() {
 		const utcDate = new Date(movie.release_date).toUTCString();
@@ -126,7 +123,7 @@ export function Movie() {
 									</div>
 								)}
 								<div className={style.genres}>
-									{movie.genres.map((item) => (
+									{movie?.genres.map((item) => (
 										<span key={item.id}>{item.name}</span>
 									))}
 								</div>
